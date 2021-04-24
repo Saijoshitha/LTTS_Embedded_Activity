@@ -60,7 +60,7 @@ int main(void)
             }
             else{
                 led_off();
-                _delay_ms(2000);
+                delay_ms(20);
             }
 
     }

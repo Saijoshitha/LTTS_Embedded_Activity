@@ -9,41 +9,60 @@
 #define F_CPU 16000000UL
 
 #include <avr/io.h>
-#include <util/delay.h>
+#include<util/delay.h>
 
 void led_setup(void){
-	DDRB |= (1 << DDB0);
+    DDRB|=(1<<PB0);
 }
-
-void led_on(void){
-	// PORTB0 is in sink config
-	// Meaning when pin is ground
-	// LED will turn on
-	PORTB = (0 << PORTB0);
-}
-
 void led_off(void){
-	// sink config
-	PORTB = (1 << PORTB0);
-}
+            PORTB&=~(1<<PB0);
 
+}
+void led_on(void){
+            PORTB|=(1<<PB0);
+
+
+}
 void delay_ms(unsigned int delaytime){
-	int i = 0;
-	for(i=0; i<=delaytime; i++){
-		_delay_ms(1);
-	}
+    int i=0;
+    for(i=0;i<=delaytime;i++){
+        _delay_ms(1);}
 }
+int main(void)
+{
 
-int main(void) {
-	// setup the leds
-	led_setup();
-	
-	while(1) {
-		led_on();
-		delay_ms(1000);
-		led_off();
-		delay_ms(500);	
-	}
-	return 0;
+ led_setup();
+
+
+
+    DDRD&=~(1<<PD1);
+    PORTD|=(1<<PD1);
+
+    DDRD&=~(1<<PD0);
+    PORTD|=(1<<PD0);
+
+
+
+    while(1){
+            if(!( PIND&(1<<PD1) ) )
+            {
+                if(!(PIND&(1<<PD0)))
+                {
+                led_on();
+                delay_ms(20);
+                }
+                else{
+                led_off();
+                delay_ms(20);
+                }
+            }
+            else{
+                led_off();
+                _delay_ms(20);
+            }
+
+    }
+
+
+    return 0;
 }
-```

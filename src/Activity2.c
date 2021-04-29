@@ -14,3 +14,4 @@ uint16_t ReadADC(uint8_t ch)
     while(!(ADCSRA & (1<<ADIF)));
     ADCSRA|=(1<<ADIF);
     return(ADC);
+}

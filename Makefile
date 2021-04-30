@@ -7,6 +7,7 @@ SRC = Activity1_main.c\
 src/Activity1.c\
 src/Activity2.c\
 src/activity3.c\
+src/activity4.c\
 
 
 # All header file paths

@@ -1,9 +1,4 @@
-  /**
- * @file Activity1.c
- * @author Chetan()
- * @brief To blink the led when a person occuipes seat and switch on the heater
- * @date 2021-04-23
- */
+ 
 #include "Activity1.h"
 
 /*header files*/

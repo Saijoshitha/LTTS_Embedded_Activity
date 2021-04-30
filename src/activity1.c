@@ -1,35 +1,49 @@
-#include "activity1.h"
+
+
+#include "Activity1.h"
+
+/*header files*/
+
 /**
  * @brief Initialize all the Peripherals and pin configurations
- * 
  */
 void peripheral_init(void)
 {
 	/* Configure LED Pin */
-	DDRB |=(1<<LED_PIN);
-    DDRD &=~(1<<BUTTONSENSOR);
-    DDRD &=~(1<<TEMPSENSOR);
-    SENSOR|=(1<<BUTTONSENSOR);
-    SENSOR|=(1<<TEMPSENSOR);
+	DDRB =DDRB | (1<<4);  
+    DDRC =DDRC & ~(1<<0);
 }
-/**
- * @brief Decides whether the tempsensor is to be considered
- * 
- */
-void tempbuttonSensor()
+
+void change_led_state(uint8_t state)
 {
-    
-    if((PIND&(1<<PD0)) && (PIND&(1<<PD1)))/**< if both buttonsensor and tempsensor reads HIGH */
-       {
-           uint16_t temp;
-           PORTB|=(1<<PB0);
-           temp=Read_ADC(0);/**< Read tempsensor value */
-           GeneratePWM(temp);
-           delay_ms(200);
-       }
-       else
-       {
-           PORTB&=~(1<<PB0);
-           delay_ms(200);
-       }
+	 
+        if(PINC & (1<<0))  
+        {
+            PORTB= PORTB | (1<<4);
+        }
+        else  
+        {
+            PORTB= PORTB & ~(1<<4);  
+        }
 }
+
+/**
+ * @brief Main function where the code execution starts
+ * @return int Return 0 if the program completes successfully
+ * @note  if pin 0 of port C is high then pin 4 of port B is high
+ * @note if above condition is not true then pin 4 of port B remain constant
+ */
+
+int main(void)
+{
+	/* Initialize Peripherals */
+	peripheral_init();
+
+	while (1)
+	{
+        change_led_state(0x01);
+		delay_ms(1000);
+	}
+	return 0;
+}
+

@@ -17,6 +17,10 @@
 
 ![Ramtable](https://github.com/Saijoshitha/LTTS_Embedded_Activity/blob/master/Activity2/act2crktop.jpg)
 
+## Activity 1 and 2 together
+
+![Activity](https://github.com/Saijoshitha/LTTS_Embedded_Activity/blob/master/Screenshot%20(860).png)
+
 #### CI and Code Quality
 
 |Build|Cppcheck|Codacy|

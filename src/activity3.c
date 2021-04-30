@@ -40,7 +40,7 @@ void GeneratePWM(uint16_t ADC_value){
         OCR1A = 716.8;/**< PWM for Duty cycle 70% (70*1024/100) */
         unsigned char UARTData[]="Temperature is 29 °C\n";
         int i=0;
-        while(UARTData[i]!='\0'){ //Read data until string termination
+        while(UARTData[i]!='\0'){ 
             UARTWrite(UARTData[i]);
             i++;
         }
@@ -60,7 +60,7 @@ void GeneratePWM(uint16_t ADC_value){
         OCR1A = 0;
         unsigned char UARTData[]="Temperature is 0 °C\n";
         int i=0;
-        while(UARTData[i]!='\0'){ //Read data untill string termination
+        while(UARTData[i]!='\0'){ 
             UARTWrite(UARTData[i]);
             i++;
         }

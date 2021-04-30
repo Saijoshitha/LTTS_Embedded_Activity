@@ -1,5 +1,6 @@
 #include "activity3.h"
 
+
 /**
  * @brief Initialize all the Peripherals and pin configurations for PWM
  * 
@@ -24,7 +25,7 @@ void GeneratePWM(uint16_t ADC_value){
             UARTWrite(UARTData[i]);
             i++;
         }
-        delay_ms(200);
+        _delay_ms(200);
     }
     else if(ADC_value>200 && ADC_value<=500){
         OCR1A = 409.6;/**< PWM for Duty cycle 40% (40*1024/100) */
@@ -34,7 +35,7 @@ void GeneratePWM(uint16_t ADC_value){
             UARTWrite(UARTData[i]);
             i++;
         }
-        delay_ms(200);
+        _delay_ms(200);
     }
     else if(ADC_value>500 && ADC_value<=700){
         OCR1A = 716.8;/**< PWM for Duty cycle 70% (70*1024/100) */
@@ -44,7 +45,7 @@ void GeneratePWM(uint16_t ADC_value){
             UARTWrite(UARTData[i]);
             i++;
         }
-        delay_ms(200);
+        _delay_ms(200);
     }
     else if(ADC_value>700 && ADC_value<=1024){
         OCR1A = 972.8;/**< PWM for Duty cycle 95% (95*1024/100) */
